@@ -9,7 +9,7 @@ export function InvoiceHeader({invoice}) {
         <p>Date : {invoice.details.date}</p>
         <p>Échéance : {formatDate(invoice.details.dueDate)}</p>
       </div>
-      <img src={reactLogo} alt="Logo" width="100" />
+      <img src={invoice.logo || reactLogo} alt="Logo" width="100" style={{ objectFit: 'contain' }} />
     </div>
   );
 }

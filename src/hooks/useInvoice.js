@@ -17,8 +17,9 @@ export const useInvoice = () => {
     items: [
       { description: "Journée de travail", quantity: 8, unit: "h", price: 20 },
     ],
-    notes: "",
-    iban: "",
+    notes: "Aucune remarque pour l'instant...",
+    iban: "Pas d'iban ?!",
+    logo: "",
     taxRate: 20,
   });
 
@@ -83,5 +84,13 @@ export const useInvoice = () => {
     }));
   };
 
-  return { invoice, setInvoice, addItem, updateItem, updateField, updateIban, updateNote, removeItem };
+  // update logo
+  const updateLogo = (newLogo) => {
+    setInvoice((prevInvoice) => ({
+      ...prevInvoice,
+      logo: newLogo
+    }));
+  };
+
+  return { invoice, setInvoice, addItem, updateItem, updateField, updateIban, updateNote, updateLogo, removeItem };
 };

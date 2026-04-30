@@ -8,22 +8,39 @@ export function InvoiceForm({
   updateItem,
   updateIban,
   updateNote,
+  updateLogo,
   removeItem,
   addItem,
 }) {
+  {
+    /* U P L O A D - L O G O */
+  }
+  const handleLogoChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        updateLogo(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "30px" }}>
       <h2>Bienvenue sur cette application de Génération de Factures !</h2>
 
       {/* D É T A I L S   F A C T U R E */}
-      <h3>Détails de la facture</h3>
       <div>
+        <h3>Détails de la facture</h3>
         <label>Date d'échéance : </label>
         <input
           type="date"
           value={invoice.details.dueDate}
           onChange={(e) => updateField("details", "dueDate", e.target.value)}
         />
+        <h3>Chargez votre logo</h3>
+        <input type="file" accept="image/*" onChange={handleLogoChange} />
       </div>
 
       {/* S E C T I O N  -  EMETTEUR / CLIENT */}
@@ -111,7 +128,6 @@ export function InvoiceForm({
 
         {/* W R I T E - N O T E - I B A N */}
         <div style={{ marginTop: "20px" }}>
-
           <h3>Ecrivez une note</h3>
           <LineItemRow
             type={"text"}
