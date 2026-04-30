@@ -5,6 +5,7 @@ import {
   calculateTotal,
 } from "../../utils/calculations";
 import { formatDate } from "../../utils/formatters";
+import { InvoiceFooter } from "./InvoiceFooter";
 import { InvoiceHeader } from "./InvoiceHeader";
 import { InvoiceTable } from "./InvoiceTable";
 import { InvoiceTotal } from "./InvoiceTotals";
@@ -55,6 +56,9 @@ export function InvoicePreview({ invoice }) {
 
       {/* TOTAUX */}
       <InvoiceTotal invoice={invoice} subtotal={subtotal} taxAmount={taxAmount} total={total}/>
+
+      {/* FOOTER */}
+      <InvoiceFooter invoice={invoice}/>
     </div>
   );
 }

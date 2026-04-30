@@ -6,6 +6,8 @@ export function InvoiceForm({
   invoice,
   updateField,
   updateItem,
+  updateIban,
+  updateNote,
   removeItem,
   addItem,
 }) {
@@ -25,7 +27,7 @@ export function InvoiceForm({
       </div>
 
       {/* S E C T I O N  -  EMETTEUR / CLIENT */}
-      <div style={{ display: "flex", gap: "20px" }}>
+      <div>
         <div style={{ flex: 1 }}>
           <FormSection
             title="Émetteur"
@@ -101,9 +103,29 @@ export function InvoiceForm({
             ))}
           </tbody>
         </table>
+
+        {/* A D D - AN - I T E M */}
         <button onClick={addItem} style={{ marginTop: "10px" }}>
           + Ajouter une ligne
         </button>
+
+        {/* W R I T E - N O T E - I B A N */}
+        <div style={{ marginTop: "20px" }}>
+
+          <h3>Ecrivez une note</h3>
+          <LineItemRow
+            type={"text"}
+            value={invoice.notes}
+            onChange={(e) => updateNote(e.target.value)}
+          />
+
+          <h3>Ecrivez votre IBAN</h3>
+          <LineItemRow
+            type={"text"}
+            value={invoice.iban}
+            onChange={(e) => updateIban(e.target.value)}
+          />
+        </div>
       </div>
     </div>
   );

@@ -3,12 +3,12 @@ import { useState } from "react";
 export const useInvoice = () => {
   const [invoice, setInvoice] = useState({
     sender: {
-      name: "Etam",
-      address: "Paris",
-      email: "etem@gmail.com",
+      name: "Enora",
+      address: "Défense",
+      email: "enora@gmail.com",
       siret: "1234",
     },
-    client: { name: "Enora", address: "Saint Ouen", email: "enora@gmail.com" },
+    client: { name: "Etam", address: "Paris", email: "etam@gmail.com" },
     details: { 
       number: `INV-${Math.floor(Math.random() * 10000)}`, 
       date: new Date().toLocaleDateString('fr-FR'), 
@@ -18,6 +18,7 @@ export const useInvoice = () => {
       { description: "Journée de travail", quantity: 8, unit: "h", price: 20 },
     ],
     notes: "",
+    iban: "",
     taxRate: 20,
   });
 
@@ -58,6 +59,22 @@ export const useInvoice = () => {
     }));
   };
 
+  // update Note
+  const updateNote = (newNote) => {
+    setInvoice((prevInvoice) => ({
+      ...prevInvoice,
+      notes: newNote
+    }));
+  };
+
+    // update Iban
+  const updateIban = (newIban) => {
+    setInvoice((prevInvoice) => ({
+      ...prevInvoice,
+      iban: newIban
+    }));
+  };
+
   // remove item
   const removeItem = (index) => {
     setInvoice((prevInvoice) => ({
@@ -66,5 +83,5 @@ export const useInvoice = () => {
     }));
   };
 
-  return { invoice, setInvoice, addItem, updateItem, updateField, removeItem };
+  return { invoice, setInvoice, addItem, updateItem, updateField, updateIban, updateNote, removeItem };
 };

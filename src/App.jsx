@@ -8,7 +8,7 @@ import { InvoicePreview } from "./components/InvoicePreview/InvoicePreview";
 import { generatePdf } from "./utils/pdfGenerator";
 
 function App() {
-  const { invoice, addItem, updateItem, removeItem, updateField } =
+  const { invoice, addItem, updateItem, removeItem, updateField, updateNote, updateIban } =
     useInvoice();
 
   return (
@@ -20,6 +20,8 @@ function App() {
           invoice={invoice}
           updateField={updateField}
           updateItem={updateItem}
+          updateNote={updateNote}
+          updateIban={updateIban}
           removeItem={removeItem}
           addItem={addItem}
         />
