@@ -1,4 +1,6 @@
+import { InvoiceHeader } from "../InvoicePreview/InvoiceHeader";
 import { FormSection } from "./FormSection";
+import { LineItemRow } from "./LineItemRow";
 
 export function InvoiceForm({
   invoice,
@@ -9,13 +11,15 @@ export function InvoiceForm({
 }) {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "30px" }}>
+      <h2>Bienvenue sur cette application de Génération de Factures !</h2>
+
       {/* D É T A I L S   F A C T U R E */}
       <h3>Détails de la facture</h3>
       <div>
         <label>Date d'échéance : </label>
-        <input 
-          type="date" 
-          value={invoice.details.dueDate} 
+        <input
+          type="date"
+          value={invoice.details.dueDate}
           onChange={(e) => updateField("details", "dueDate", e.target.value)}
         />
       </div>
@@ -57,8 +61,8 @@ export function InvoiceForm({
             {invoice.items.map((item, index) => (
               <tr key={index}>
                 <td>
-                  <input
-                    type="text"
+                  <LineItemRow
+                    type={"text"}
                     value={item.description}
                     onChange={(e) =>
                       updateItem(index, "description", e.target.value)
@@ -66,31 +70,28 @@ export function InvoiceForm({
                   />
                 </td>
                 <td>
-                  <input
-                    type="number"
+                  <LineItemRow
+                    type={"number"}
                     value={item.quantity}
                     onChange={(e) =>
                       updateItem(index, "quantity", Number(e.target.value))
                     }
-                    style={{ width: "60px" }}
                   />
                 </td>
                 <td>
-                  <input
-                    type="text"
+                  <LineItemRow
+                    type={"text"}
                     value={item.unit}
                     onChange={(e) => updateItem(index, "unit", e.target.value)}
-                    style={{ width: "60px" }}
                   />
                 </td>
                 <td>
-                  <input
-                    type="number"
+                  <LineItemRow
+                    type={"number"}
                     value={item.price}
                     onChange={(e) =>
                       updateItem(index, "price", Number(e.target.value))
                     }
-                    style={{ width: "80px" }}
                   />
                 </td>
                 <td>

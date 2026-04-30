@@ -1,6 +1,13 @@
-import reactLogo from '../../assets/react.svg';
-import { calculateSubtotal, calculateTaxAmount, calculateTotal } from '../../utils/calculations';
-import { formatDate } from '../../utils/formatters';
+import reactLogo from "../../assets/react.svg";
+import {
+  calculateSubtotal,
+  calculateTaxAmount,
+  calculateTotal,
+} from "../../utils/calculations";
+import { formatDate } from "../../utils/formatters";
+import { InvoiceHeader } from "./InvoiceHeader";
+import { InvoiceTable } from "./InvoiceTable";
+import { InvoiceTotal } from "./InvoiceTotals";
 
 export function InvoicePreview({ invoice }) {
   const subtotal = calculateSubtotal(invoice.items);
@@ -8,21 +15,27 @@ export function InvoicePreview({ invoice }) {
   const total = calculateTotal(subtotal, taxAmount);
 
   return (
-    <div id="invoice-preview" style={{ padding: '20px', border: '1px solid #ccc', backgroundColor: 'white' }}>
-      {/* HEADER */}
-      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-        <div>
-          <h1>Facture n° {invoice.details.number}</h1>
-          <p>Date : {invoice.details.date}</p>
-          <p>Échéance : {formatDate(invoice.details.dueDate)}</p>
-        </div>
-        <img src={reactLogo} alt="Logo" width="100" />
-      </div>
+    <div
+      id="invoice-preview"
+      style={{
+        padding: "20px",
+        border: "1px solid #ccc",
+        backgroundColor: "white",
+      }}
+    >
+      {/* F A C T U R E  -  H E A D E R */}
+      <InvoiceHeader invoice={invoice} />
 
       <hr />
 
       {/* EMETTEUR ET CLIENT */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '20px' }}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          marginTop: "20px",
+        }}
+      >
         <div>
           <h3>Émetteur</h3>
           <p>{invoice.sender.name}</p>
@@ -38,33 +51,10 @@ export function InvoicePreview({ invoice }) {
       </div>
 
       {/* TABLEAU DES ARTICLES */}
-      <table style={{ width: '100%', marginTop: '30px', borderCollapse: 'collapse' }}>
-        <thead>
-          <tr style={{ borderBottom: '2px solid black' }}>
-            <th style={{ textAlign: 'left' }}>Description</th>
-            <th>Quantité</th>
-            <th>Prix Unitaire</th>
-            <th>Total</th>
-          </tr>
-        </thead>
-        <tbody>
-          {invoice.items.map((item, index) => (
-            <tr key={index} style={{ borderBottom: '1px solid #ccc' }}>
-              <td>{item.description}</td>
-              <td style={{ textAlign: 'center' }}>{item.quantity} {item.unit}</td>
-              <td style={{ textAlign: 'center' }}>{item.price} €</td>
-              <td style={{ textAlign: 'center' }}>{item.quantity * item.price} €</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <InvoiceTable invoice={invoice} />
 
       {/* TOTAUX */}
-      <div style={{ marginTop: '30px', textAlign: 'right' }}>
-        <p>Sous-total HT : <strong>{subtotal} €</strong></p>
-        <p>TVA ({invoice.taxRate}%) : <strong>{taxAmount} €</strong></p>
-        <h3>Total TTC : {total} €</h3>
-      </div>
+      <InvoiceTotal invoice={invoice} subtotal={subtotal} taxAmount={taxAmount} total={total}/>
     </div>
   );
 }
