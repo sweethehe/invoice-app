@@ -13,9 +13,10 @@ function App() {
 
   return (
     <>
-    <div style={{ display: "flex", gap: "40px", padding: "20px" }}>
+    <div className="app-container">
+
       {/* F A C T U R E - F O R M */}
-      <div style={{ flex: 1 }}>
+      <div className="app-column">
         <InvoiceForm
           invoice={invoice}
           updateField={updateField}
@@ -29,13 +30,14 @@ function App() {
       </div>
 
       {/* P R E V I E W - F A C T U R E */}
-      <div style={{ flex: 1 }}>
+      <div className="app-column">
         <InvoicePreview invoice={invoice} />
+        <button className="download-btn" onClick={() => generatePdf(invoice)}>
+          Télécharger le PDF
+        </button>
       </div>
 
     </div>
-
-    <button onClick={() => generatePdf(invoice)}>Télécharger le PDF</button>
     </>
   );
 }

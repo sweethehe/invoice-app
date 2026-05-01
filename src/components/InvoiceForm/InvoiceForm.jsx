@@ -27,24 +27,23 @@ export function InvoiceForm({
   };
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "30px" }}>
+    <div className="form-card">
       <h2>Bienvenue sur cette application de Génération de Factures !</h2>
 
       {/* D É T A I L S   F A C T U R E */}
       <div>
-        <h3>Détails de la facture</h3>
+        <h3 style={{marginTop: 10}}>Détails de la facture</h3>
         <label>Date d'échéance : </label>
         <input
           type="date"
           value={invoice.details.dueDate}
           onChange={(e) => updateField("details", "dueDate", e.target.value)}
         />
-        <h3>Chargez votre logo</h3>
+        <label style={{ marginTop: 10 }} >Chargez votre logo : </label>
         <input type="file" accept="image/*" onChange={handleLogoChange} />
       </div>
 
-      {/* S E C T I O N  -  EMETTEUR / CLIENT */}
-      <div>
+      <div className="flex-row">
         <div style={{ flex: 1 }}>
           <FormSection
             title="Émetteur"
@@ -114,7 +113,7 @@ export function InvoiceForm({
                   />
                 </td>
                 <td>
-                  <button onClick={() => removeItem(index)}>Supprimer</button>
+                  <button className="delete-button" onClick={() => removeItem(index)}>Supprimer</button>
                 </td>
               </tr>
             ))}
@@ -122,7 +121,7 @@ export function InvoiceForm({
         </table>
 
         {/* A D D - AN - I T E M */}
-        <button onClick={addItem} style={{ marginTop: "10px" }}>
+        <button onClick={addItem} className="add-button" style={{ marginTop: 20 }}>
           + Ajouter une ligne
         </button>
 
@@ -135,7 +134,7 @@ export function InvoiceForm({
             onChange={(e) => updateNote(e.target.value)}
           />
 
-          <h3>Ecrivez votre IBAN</h3>
+          <h3 style={{ marginTop: 20 }}>Ecrivez votre IBAN</h3>
           <LineItemRow
             type={"text"}
             value={invoice.iban}

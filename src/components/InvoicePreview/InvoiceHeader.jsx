@@ -3,7 +3,7 @@ import { formatDate } from "../../utils/formatters";
 
 export function InvoiceHeader({invoice}) {
   return (
-    <div style={{ display: "flex", justifyContent: "space-between" }}>
+    <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 10}}>
       <div>
         <h1>Facture n° {invoice.details.number}</h1>
         <p>Date : {invoice.details.date}</p>

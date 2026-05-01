@@ -1,0 +1,203 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Colors */
+  --bg-color: #f3f4f6; /* Light gray background */
+  --surface-color: #ffffff; /* White for cards */
+  --primary-color: #4f46e5; /* Indigo */
+  --primary-hover: #4338ca;
+  --danger-color: #ef4444;
+  --danger-hover: #dc2828;
+  --text-main: #1f2937;
+  --text-muted: #6b7280;
+  --border-color: #e5e7eb;
+  --border-focus: #c7d2fe;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  color: var(--text-main);
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+/* Inputs */
+input, select, textarea {
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 0.875rem;
+  transition: all 0.2s ease;
+  background-color: #f9fafb;
+  box-sizing: border-box;
+  vertical-align: middle;
+}
+
+input::placeholder, textarea::placeholder {
+  vertical-align: middle;
+  line-height: normal;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px var(--border-focus);
+  background-color: var(--surface-color);
+}
+
+label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-main);
+  margin-bottom: 0.35rem;
+}
+
+/* Buttons */
+button {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-color: var(--primary-color);
+  color: white;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-1px);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+button.danger {
+  background-color: var(--danger-color);
+}
+
+button.danger:hover {
+  background-color: var(--danger-hover);
+}
+
+button.download-btn {
+  font-size: 1.1rem;
+  padding: 1rem 2rem;
+  box-shadow: var(--shadow-md);
+  margin-top: 2rem;
+  width: 100%;
+  font-weight: 600;
+}
+
+/* Form Layout */
+.form-card {
+  background-color: var(--surface-color);
+  padding: 2.5rem;
+  border-radius: 16px;
+  box-shadow: var(--shadow-md);
+  height: 100%;
+}
+
+.form-section {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.flex-row {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 20px;
+}
+.flex-1 {
+  flex: 1;
+}
+
+/* Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+th {
+  text-align: left;
+  padding: 0.75rem 0.5rem;
+  border-bottom: 2px solid var(--border-color);
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+td {
+  padding: 1rem 0.5rem;
+  border-bottom: 1px solid var(--border-color);
+  vertical-align: middle;
+}
+
+/* Invoice Preview specific */
+.invoice-paper {
+  background-color: white;
+  width: 210mm; /* A4 width */
+  min-height: 297mm; /* A4 height */
+  padding: 50px;
+  margin: 0 auto;
+  box-shadow: var(--shadow-lg);
+  color: #000;
+  border-radius: 4px;
+}
+
+/* Responsive adjustments */
+.app-container {
+  display: flex;
+  gap: 3rem;
+  padding: 2rem;
+  max-width: 1600px;
+  margin: 0 auto;
+  align-items: flex-start;
+}
+
+.app-column {
+  flex: 1;
+  min-width: 0; /* Prevents flex items from overflowing */
+}
+
+@media (max-width: 1200px) {
+  .app-container {
+    flex-direction: column;
+  }
+  .invoice-paper {
+    width: 100%;
+    min-height: auto;
+  }
+}
