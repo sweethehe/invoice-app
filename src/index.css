@@ -2,9 +2,9 @@
 
 :root {
   /* Colors */
-  --bg-color: #f3f4f6; /* Light gray background */
-  --surface-color: #ffffff; /* White for cards */
-  --primary-color: #4f46e5; /* Indigo */
+  --bg-color: #f3f4f6;
+  --surface-color: #ffffff;
+  --primary-color: #4f46e5;
   --primary-hover: #4338ca;
   --danger-color: #ef4444;
   --danger-hover: #dc2828;
@@ -165,19 +165,6 @@ td {
   vertical-align: middle;
 }
 
-/* Invoice Preview specific */
-.invoice-paper {
-  background-color: white;
-  width: 210mm; /* A4 width */
-  min-height: 297mm; /* A4 height */
-  padding: 50px;
-  margin: 0 auto;
-  box-shadow: var(--shadow-lg);
-  color: #000;
-  border-radius: 4px;
-}
-
-/* Responsive adjustments */
 .app-container {
   display: flex;
   gap: 3rem;
@@ -189,7 +176,7 @@ td {
 
 .app-column {
   flex: 1;
-  min-width: 0; /* Prevents flex items from overflowing */
+  min-width: 0;
 }
 
 @media (max-width: 1200px) {
