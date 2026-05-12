@@ -28,8 +28,7 @@ export function InvoiceForm({
 
   return (
     <div className="form-card">
-      <h2>Bienvenue sur cette application de Génération de Factures !</h2>
-
+      <h2>Formulaire de ma Facture </h2>
       {/* D É T A I L S   F A C T U R E */}
       <div>
         <h3 style={{marginTop: 10}}>Détails de la facture</h3>
